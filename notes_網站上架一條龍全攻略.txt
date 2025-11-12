@@ -1,0 +1,36 @@
+網站上架全攻略挑戰清單：
+
+1.買網址
+  GoDaddy，無保護的就可以了，不用加價，防護的部分用clooudflare就可以了
+  個人使用建議 .tw .idv
+
+  使用cloudflare的DNS來取代其預設的DNS，這樣的話，cloudflare才有辦法實現代管
+
+2.cloudflare DNS代管
+  免費版本就有WAF、HTTPS
+
+3.GitHub Pages部署
+  開專案 > 上傳檔案  > Build and deployment 完成之後會有一個對應的預設網址
+  不過不要用預設的，另外在Custom domain那邊改成在GoDaddy申請的domain
+
+
+4.DNS指向到GitHub Pages服務
+  在cloudflare的DNS設定中，可以將有用到的(domain)指向github
+
+
+#到這一步，網站已建立成功，也可以讓別人連了
+
+5.將網站提交到Google Search Console
+  有兩個加入(選取資源類型)的方式，如果用"網域"，因為它有跟cloudflare合作，所以可以直接透過cloudflare認證網站所有權
+  如果用"網址前置字元"的方式，會有一個認證用的檔案需要放到網站上面，透過這樣的方式認證網站所有權
+
+6.將網站加入GA(Googgle Analytics)流量分析工具)
+  申請之後會給一段代碼(嵌入碼)，放到所有的網頁中(<head>)
+
+7.綠界(金流)
+  申請之後會給一段代碼(嵌入碼)
+  也可以去修改嵌入碼，調整其顯示
+  很多Vtuber用來實現donate
+
+8.mailchimp
+  電子報服務，現在類似服務大多需要收費了，可以自訂信件(表單)
