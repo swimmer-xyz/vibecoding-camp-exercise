@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>妙麗歲數計算機</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .title img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    .block {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    button {
+      display: block;
+      width: 60%;
+      margin: 0 auto 20px auto;
+      padding: 10px;
+      font-size: 1rem;
+      background: #dcdcdc;
+      border: 2px solid #4a90e2;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #bcbcbc;
+    }
+
+    .result-box {
+      width: 100%;
+      min-height: 50px;
+      background: #eaeaea;
+      white-space: pre-line;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">
+      <img src="https://cdn-icons-png.flaticon.com/512/91/91544.png" alt="狗狗圖示" />
+      妙麗歲數計算機
+    </div>
+
+    <div class="block">
+      <label for="birthday">狗狗的出生日期：</label>
+      <input type="date" id="birthday" />
+
+      <button onclick="calcAge()">開始計算</button>
+
+      <div id="result" class="result-box"></div>
+    </div>
+  </div>
+
+  <script>
+    // 預設日期為今天
+    document.getElementById("birthday").valueAsDate = new Date();
+
+    function calcAge() {
+      const birthday = new Date(document.getElementById("birthday").value);
+      const today = new Date();
+
+      if (birthday > today) {
+        document.getElementById("result").textContent = "出生日期不能是未來喔！";
+        return;
+      }
+
+      const diffTime = today - birthday;
+      const dogYears = diffTime / (365.25 * 24 * 60 * 60 * 1000);
+
+      // 狗年齡換算：一般常用公式：狗年齡 × 7
+      const humanYears = dogYears * 7;
+
+      const output = `妙麗現在大約 ${dogYears.toFixed(1)} 歲狗年齡，\n換算成人類大約是 ${humanYears.toFixed(1)} 歲`;
+
+      document.getElementById("result").textContent = output;
+    }
+  </script>
+</body>
+</html>
