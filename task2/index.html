@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>個人網站骨架</title>
+
+    <!-- ===== 全站主要 CSS ===== -->
+    <style>
+      /* ===== CSS RESET ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Helvetica, sans-serif;
+        background: #f7f7f7;
+        color: #333;
+        line-height: 1.7;
+      }
+
+      /* ===== Header 區塊 ===== */
+      header {
+        background: #ffffff;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      nav ul {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        justify-content: center;
+      }
+      nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+      }
+
+      /* ===== Hero 區塊 ===== */
+      .hero {
+        height: 70vh;
+        background: linear-gradient(135deg, #87cefa, #4facfe);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+
+      /* ===== About 區塊 ===== */
+      .section {
+        max-width: 900px;
+        padding: 60px 20px;
+        margin: auto;
+      }
+      .section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      /* ===== Footer ===== */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background: #222;
+        color: #ccc;
+        margin-top: 40px;
+      }
+
+      /* ===== 預留 CSS 區塊（給開發者擴充） ===== */
+      /* === developer-section-start === */
+      /* 你可以在這裡添加更多 CSS */
+      /* === developer-section-end === */
+    </style>
+  </head>
+
+  <body>
+    <!-- ===== Header 導覽列 ===== -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#hero">首頁</a></li>
+          <li><a href="#about">關於我</a></li>
+          <li><a href="#skills">技能</a></li>
+          <li><a href="#projects">作品集</a></li>
+          <li><a href="#contact">聯絡</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ===== Hero 區塊 ===== -->
+    <section id="hero" class="hero">
+      <h1>你的名字</h1>
+      <p>打造你的個人網站，用來呈現你的作品與故事。</p>
+
+      <!-- 開發者插槽：Hero CTA 按鈕等 -->
+      <!-- === hero-slot-start === -->
+      <!-- 可在此放置：按鈕、頭像、跑馬燈文字等 -->
+      <!-- === hero-slot-end === -->
+    </section>
+
+    <!-- ===== About 區塊 ===== -->
+    <section id="about" class="section">
+      <h2>關於我</h2>
+      <p>這裡放你的自我介紹、背景與興趣。</p>
+
+      <!-- === about-slot-start === -->
+      <!-- 可自行新增更多段落、圖片等 -->
+      <!-- === about-slot-end === -->
+    </section>
+
+    <!-- ===== Skills 區塊 ===== -->
+    <section id="skills" class="section">
+      <h2>技能</h2>
+      <p>放你的技能圖示、條列、熟練度等。</p>
+
+      <!-- === skills-slot-start === -->
+      <!-- 技能內容插槽 -->
+      <!-- === skills-slot-end === -->
+    </section>
+
+    <!-- ===== Project 區塊 ===== -->
+    <section id="projects" class="section">
+      <h2>作品集</h2>
+      <p>展示你做過的網站、設計、程式、影像等作品。</p>
+
+      <!-- === projects-slot-start === -->
+      <!-- 作品卡片插槽 -->
+      <!-- === projects-slot-end === -->
+    </section>
+
+    <!-- ===== Contact 區塊 ===== -->
+    <section id="contact" class="section">
+      <h2>聯絡我</h2>
+      <p>留下你的 Email、社群連結或表單。</p>
+
+      <!-- === contact-slot-start === -->
+      <!-- 聯絡方式插槽 -->
+      <!-- === contact-slot-end === -->
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>© 2025 你的名字 | All Rights Reserved</footer>
+  </body>
+</html>
