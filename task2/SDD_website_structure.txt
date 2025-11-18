@@ -1,0 +1,252 @@
+# 【Phase 1】建立個人網站骨架
+（單一 index.html，嚴禁 JS＋使用 Unsplash 圖庫＋HTML/CSS 皆預留插槽＋CSS 禁用 ID 選擇器）
+
+你現在是一位「前端工程師＋教練」，  
+任務是幫我建立一個個人網站的「環境與骨架」，全部寫在單一 index.html 檔案裡，並且要幫開發者預留好「HTML 區塊插槽」與「CSS 區塊插槽」，方便之後用其他 Prompt 來替換。
+
+請依照以下所有規格，產出一個完整的 index.html，單一段落讓我可以直接複製或下載
+
+=====================================================================================
+# 全站環境規格書 v1.0 
+
+【一、專案目標】
+一個個人網站，用來介紹個人資訊、展示技能、作品與聯絡資訊等資訊。
+希望可以給觀看者一個深刻且正面的印象
+並提供聯絡方式
+
+【二、結構規格】
+1.請建立以下主要區塊：
+	- Header（導覽列）
+	- Hero Section（首頁主視覺），id="hero" 
+	- About Section（個人介紹），id="about"
+	- Skills Section（技能介紹），id="skills"
+	- Projects Section（作品展示），id="projects"
+	- Contact Section（聯絡表單），id="contact"
+	- Footer（底部資訊）
+
+2.同時在每個 section 上加上語意化的 class，例如：
+	- class="section section-hero"
+	- class="section section-about"
+	- class="section section-skills"
+
+3.每一區塊的 HTML 結構統一為「註解包住一整個 section」，讓開發者之後可以「整段替換某一個區塊」，而不用思考要貼到哪裡。示意：
+	- Hero 區：
+		<!-- SECTION:HERO-START -->
+		<section id="hero" class="section section-hero">
+		 …Hero 區占位內容…
+		</section>
+		<!-- SECTION:HERO-END -->
+		
+4.每一區塊的所對應的 CSS 結構統一為「註解包住一整個區塊相關的樣式」，示意：
+	- Hero 區：(CSS:HERO)
+		/* CSS:HERO-START */
+		…所有與 Hero 區相關的樣式，例如 .section-hero、.hero-title…
+		/* CSS:HERO-END */
+
+5.全站基底樣式獨立出來（CSS:BASE）
+		/* CSS:BASE-START */
+		…全站共用設定（box-sizing、body、.page、.container、img 等）…
+		/* CSS:BASE-END */
+
+
+【三、結構區塊細節】
+1.導覽列：
+	- 左側：網站名稱（純文字 Logo）。
+	- 右側：導覽連結項目（使用 <a>），對應各區塊。
+
+	- 連結規則（href 必須是錨點，不可以是 # 或空字串）：
+		- 首頁 → href="#hero"
+		- 關於我 → href="#about"
+		- 技能 → href="#skills"
+		- 作品集 → href="#projects"
+		- 聯絡我 → href="#contact"
+		
+	-樣式建議（CSS 使用 class，禁止用 ID）：
+		- header 使用 .site-header。
+		- 導覽列容器用 .nav。
+		- 連結使用 .nav-link。
+		- 導覽列固定在頁面頂部（position: sticky; top: 0）。
+		- 有簡單的背景色與底線或陰影，方便與內容區分。		
+		- 預期結構：
+			<header class="site-header">
+				<nav class="nav">...</nav>
+			</header>
+		
+2.Hero區塊：
+	- 必須包含全站唯一的一個 h1。
+	- 一個簡短主標題（說明這是個人網站的主視覺區）。
+	- 1～2 段 <p> 說明未來會放：
+		- 一句話自我介紹
+		- 核心職稱 / 角色（例如 Frontend Developer）
+		- 行動呼籲（例如 看看我的朋友們、交個朋友）
+		- 這裡目前是占位內容。
+		- 未來會用 Section SDD 產生更完整的內容。       
+		
+3.About、Skills、Projects、Contact 區塊：
+	- 每個區塊至少需要：
+		- 一個 h2 作為區塊主標。
+		- 1～2 段 <p> 說明：
+		- 這裡目前是占位內容。
+		- 未來會用 Section SDD 產生更完整的內容。
+		
+4.Footer 區塊：
+	至少需要一行文字，如「© 2025 My Personal Website」。
+	class 使用 .site-footer。		
+		
+【四、樣式規格】
+1.整體風格關鍵字：	
+	- 乾淨、專業、簡單。
+
+2.顏色設定：
+	- 主色：請選擇偏「深藍／青色系」的主色，用在重點元素（按鈕、標題強調、連結 hover 等）。
+	- 背景：以深色系（dark theme）為主，例如深藍、深灰。但重點元素使用亮色
+	- 文字顏色：淺灰～白色，保證對比足夠。
+	- hover 主色亮2階，active 主色暗2階
+
+3.排版：
+	- 使用系統字型（system UI 字型族）。
+	- 行距偏舒適，適合閱讀履歷與作品描述。
+
+
+
+
+【五、技術規格】
+1.僅能使用 HTML + CSS：
+	- 禁止任何 JavaScript。
+	- 不可以出現：
+		- <script> 標籤
+		- 任何 onclick、onchange 等事件屬性
+		- 任何 addEventListener、console.log 或其他 JS 語法。
+
+2.禁止外部資源：
+   - 不可以使用 <link rel="stylesheet">。
+   - 不可以使用任何外部 JS 或 CSS CDN（包含 Google Fonts、Bootstrap 等）。
+   - 圖片網址(Unsplash)不算外部資源
+
+3.CSS 必須全部寫在 <head> 裡「單一的」 style 標籤內。
+
+4.語系與文字：
+	- <html lang="zh-Hant">
+	- 內容全部使用繁體中文（台灣用語）。
+
+5.RWD 策略：
+	- 採用手機優先（mobile-first）。
+	- 保證在 320px、768px、1440px 寬度下不會產生水平捲動（依照你的 CSS 設計推估）。
+
+6.不要向我提問：
+	- 不可以要求我補資料或確認。
+	- 如有不明確處，請你自行填入合理預設值並直接產出結果。
+
+7.CSS 禁用 ID 選擇器（非常重要）：
+	- 在整份 CSS 中「禁止」使用任何 ID 選擇器（例如 #hero、#about 等）。
+	- 所有樣式請一律使用：
+		- 元素選擇器（例如 body、img）
+		- 類別選擇器（例如 .section-hero、 .nav-link）
+		- 或巢狀組合（例如 .section-hero h1）
+		- HTML 中仍可使用 id 作為錨點，但只能掛在元素上（例如 <section id="hero" …>），且只用在 href="#hero" 這類跳轉
+   
+8.圖片規則
+	8-1. 每一個 <img> 必須：
+		- 有非空的 alt 文字，描述圖片內容（例如：「mars」）。
+		- 建議加上 loading="lazy"。
+		- 在 CSS 中適用：
+		- img { max-width: 100%; height: auto; display: block; }
+
+    8-2. 建議在 Hero 或 About 區放一張示意形象照（與Skills Section內容相關）。   
+	8-3. Projects 區塊可放 1~3 張示意圖片
+	8-4. Projects 區塊的圖片容器結構為：
+		.project-item → 包含圖片 + 文字，採單欄（mobile），768px 以上可採 2 欄或維持單欄，由模型自行選擇合理排版。
+
+9.不使用 CSS 變數（--）與 calc()。
+	
+10.盡量保持簡潔可擴充		
+
+
+【六、輸出格式規定】
+1. 只輸出「一個完整的 index.html 檔案內容」。
+
+2. 必須是合法的 HTML 文件結構，包含：
+   - <!DOCTYPE html>
+   - <html lang="zh-Hant">
+   - <head> … </head>
+   - <body> … </body>
+   
+3.RWD 具體要求
+	- 手機優先：
+		- 預設樣式以小螢幕（320px）為基準。
+		- 各區塊預設為單欄排版。
+
+	- 在寬度較大（例如 min-width: 768px）時：
+		- 可以將 About 或 Projects 改成左右雙欄。
+		- 但仍須避免水平捲動。
+
+	- 建議設定：
+		- body { margin: 0; }
+		- 統一使用 .container 控制內容最大寬度與左右 padding。		
+
+
+
+【七、SEO 與結構規則】
+1. 基本結構：
+   - 必須包含 <!DOCTYPE html>。
+   - 必須有 <html>、<head>、<body>，巢狀正確。
+   - <html> 必須帶有 lang="zh-Hant"。
+
+2. <head> 內必須包含：
+	- meta charset="UTF-8"
+	- meta name="viewport" content="width=device-width, initial-scale=1.0"
+	- 一個非空的 title，內容與「個人品牌網站」相關。
+	- 一個 meta name="description" content="..."
+	- content 以中文字元計算，約 50～160 字。。
+	- 使用自然的繁體中文描述：這是用來介紹個人背景、技能、朋友圈與聯絡方式的網站。
+
+3. 標題層級：
+   - 全站只能有一個 h1（在 Hero 區）。
+   - 其他區塊主標使用 h2。
+   - 如有需要，可以在區塊內使用 h3 作為小標題，但不要過度複雜。
+   - 本版本不需使用 h3，未來若補充內容時再加入。
+
+4. 連結規則（這裡要特別注意 href 合法性）：
+	- 所有 <a> 的 href 必須是「非空」且「不是單純的 #」：
+		- 錨點連結一律使用明確 id，例如 href="#hero"、href="#about"。
+		- 導覽列全部使用這種錨點寫法。
+	- 其他類型連結也必須給出合理的 href，不可以留空或寫成 #，例如：
+		- Email：href="mailto:hello@example.com"
+		- 電話：href="tel:+886900000000"
+		- GitHub：href="https://github.com/yourname"
+		- LinkedIn：href="https://www.linkedin.com/in/yourname"
+	- 不可以使用 javascript: 開頭或任何明顯無效的 href。   
+	
+	
+【八、自我檢查清單（請在產出前自行確認，含插槽與 href）】
+
+1.結構與 SEO
+	- 有 <!DOCTYPE html>、<html lang="zh-Hant">、<head>、<body>。
+	- <meta charset> 與 <meta name="viewport"> 已設定。
+	- 有 <title> 與 <meta name="description">，描述以中文字元計算，約 50～160 字。。
+	- 全站只有一個 <h1>，在 Hero 區。
+
+2.連結與圖片
+	- 所有 <a> 的 href 都是非空、不是 #：
+		  - 導覽列用 href="#hero" 這類錨點。
+		  - 其他連結（GitHub / Email / LinkedIn 等）使用 mailto:、tel: 或完整 https URL。
+	- 所有 <img> 來源皆為 Unsplash，且有合理的 alt 文本。
+	- 圖片有透過 CSS 保證不會造成水平捲動。
+
+3.HTML 插槽（Section Slot）
+	- <main> 裡的 Hero / About / Skills / Projects / Contact 各有一組 SECTION:XXX-START / SECTION:XXX-END 註解。
+	- 每組註解中間包住「一整個 section」，且 section 自身帶有對應的 id（hero / about / skills / projects / contact）。
+	- 各占位區塊文字都有清楚寫出：之後會用 Section SDD 產生新的 section，請開發者「整段貼在兩個註解中間」來替換。
+
+4.CSS 插槽（CSS Slot）
+	- <style> 裡有 CSS:BASE / CSS:HERO / CSS:ABOUT / CSS:SKILLS / CSS:PROJECTS / CSS:CONTACT / CSS:RWD 等註解區塊。
+	- 各區塊內的選擇器皆使用元素或 class，不使用 ID。
+
+5.CSS 禁用 ID 選擇器
+	- section 的 id 不會用於任何 CSS，只用於錨點。
+	- 確認整份 CSS 沒有任何 #xxx 選擇器。
+	- 所有區塊樣式都以 .section-hero、.section-about 等 class 為主。
+
+6.版面與 RWD
+	- 採用手機優先設計，在 320px、768px、1440px 寬度下理論上不會水平捲動。
+	- 各區塊有清楚的占位文案，提醒未來會用 Section SDD 來替換。	
