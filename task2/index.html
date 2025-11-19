@@ -74,8 +74,8 @@
         top: 0;
         z-index: 40;
         backdrop-filter: blur(6px);
-        background-color: rgba(8, 13, 22, 0.75);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        background-color: rgba(8, 13, 22, 0.85);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         box-shadow: 0 2px 8px rgba(2, 6, 12, 0.5);
       }
       .nav {
@@ -103,10 +103,13 @@
         border-radius: 6px;
         color: #cfe7ff;
         font-size: 14px;
+        transition: all 160ms ease;
       }
       .nav-link:hover {
-        background-color: rgba(17, 86, 140, 0.12);
+        background-color: rgba(17, 86, 140, 0.18);
         color: #e8fbff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(8, 30, 60, 0.25);
       }
       /* CSS:HEADER-END */
 
@@ -116,6 +119,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        /* 底色使用藍黑色，像星空，並嵌入太陽系圖案（SVG data URI） */
+        background-color: #041226;
+        background-image: radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.02) 0px,
+            rgba(255, 255, 255, 0) 60%
+          ),
+          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'><rect width='1200' height='600' fill='%23031220'/><g fill='none' stroke='%23184452' stroke-opacity='0.45'><circle cx='200' cy='300' r='120'/><circle cx='200' cy='300' r='200'/><circle cx='200' cy='300' r='280'/></g><g fill='%23ffd27a'><circle cx='200' cy='300' r='24'/></g><g fill='%23b7d7ff'><circle cx='320' cy='300' r='8'/><circle cx='420' cy='300' r='10'/><circle cx='540' cy='300' r='12'/></g><g fill='%23ffffff' opacity='0.06'><circle cx='30' cy='40' r='1.5'/><circle cx='90' cy='80' r='1.3'/><circle cx='150' cy='120' r='1.1'/><circle cx='1100' cy='80' r='1.6'/><circle cx='980' cy='200' r='1.2'/></g></svg>");
+        background-size: cover;
+        background-blend-mode: overlay;
+        color: #eaf6ff;
       }
       .hero {
         display: grid;
@@ -157,6 +171,8 @@
       .hero-figure {
         width: 100%;
         overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(2, 6, 12, 0.6);
       }
       /* CSS:HERO-END */
 
@@ -177,6 +193,13 @@
         margin: 0 0 10px 0;
         color: #cbdaf0;
       }
+      .about-list {
+        margin-top: 10px;
+        color: #d8ecff;
+      }
+      .about-list li {
+        margin-bottom: 8px;
+      }
       /* CSS:ABOUT-END */
 
       /* CSS:SKILLS-START */
@@ -196,6 +219,21 @@
         color: #d8ecff;
         font-size: 13px;
       }
+      .skill-group {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .skill-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        align-items: center;
+      }
+      .skill-meta {
+        font-size: 13px;
+        color: #bcd0e8;
+      }
       /* CSS:SKILLS-END */
 
       /* CSS:PROJECTS-START */
@@ -209,10 +247,20 @@
       .project-item {
         display: grid;
         gap: 8px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.01),
+          rgba(255, 255, 255, 0)
+        );
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        align-items: start;
       }
       .project-title {
         font-weight: 600;
         margin: 0;
+        color: #eaf6ff;
       }
       .project-desc {
         margin: 0;
@@ -222,6 +270,23 @@
       .project-meta {
         color: #92a8c8;
         font-size: 13px;
+      }
+      .project-figure {
+        width: 100%;
+        height: 160px;
+        overflow: hidden;
+        display: block;
+        border-radius: 8px;
+        background: #081526;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .project-figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
       }
       /* CSS:PROJECTS-END */
 
@@ -350,11 +415,11 @@
                   個人品牌網站 — 我的作品與技能展示
                 </h1>
                 <p class="hero-sub">
-                  這裡是個人網站的主視覺占位區。未來會放置一句話自我介紹、核心職稱，以及行動呼籲。
+                  前端工程師 / 教學與接案 —
+                  我把複雜的技術講得簡單，讓產品與使用者都更快上手。
                 </p>
                 <p class="hero-meta">
-                  目前為占位內容。之後會用 Section SDD
-                  產生更完整內容，開發者可整段替換此區塊。
+                  設計風格：深色星空主題 — 背景含太陽系示意圖。
                 </p>
                 <a class="hero-cta" href="#projects">看看我的作品</a>
               </div>
@@ -362,7 +427,7 @@
               <figure class="hero-figure" aria-hidden="false">
                 <!-- 示意形象照（來自 Unsplash 公開頁面） -->
                 <a
-                  href="https://unsplash.com/photos/jpHw8ndwJ_Q"
+                  href="https://unsplash.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -376,7 +441,7 @@
                   class="muted"
                   style="margin-top: 8px; font-size: 13px"
                 >
-                  示意形象照 — Unsplash（開放圖片頁面）
+                  示意形象照 — 示例圖片
                 </figcaption>
               </figure>
             </div>
@@ -395,24 +460,38 @@
               <div class="about-text">
                 <h2 id="about-heading">關於我</h2>
                 <p>
-                  這裡目前是關於我的占位內容。未來會放入更完整的自我介紹、經歷摘要與設計／開發理念。
+                  我目前是前端工程師，並從事教學與接案。主要技術為
+                  HTML、CSS、JavaScript 與響應式設計。
                 </p>
                 <p>
-                  之後會用 Section SDD 產生新的 About
-                  區塊，請開發者將生成內容整段貼到 SECTION:ABOUT-START 與
-                  SECTION:ABOUT-END 之間來替換。
+                  我重視溝通與可維護性，喜歡把複雜概念拆解成容易理解的步驟；教學時也會用實際範例幫助理解。
                 </p>
+
+                <ul class="about-list">
+                  <li>
+                    掌握 RWD
+                    與無障礙（Accessibility）實務，能將設計落實到可開發的
+                    HTML/CSS。
+                  </li>
+                  <li>
+                    善於以教學方式協助團隊學習新工具與流程（如 Git、Figma）。
+                  </li>
+                  <li>
+                    能協助從 UI
+                    細節到前端部署的端對端工作，並提供可維護的程式與文件。
+                  </li>
+                </ul>
               </div>
 
               <div class="about-figure">
                 <a
-                  href="https://unsplash.com/photos/8manzosRGPE"
+                  href="https://unsplash.com/s/photos/working-on-laptop"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
                     src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
-                    alt="示意：個人像照或形象照"
+                    alt="示意：操作電腦的工作照"
                     loading="lazy"
                   />
                 </a>
@@ -432,18 +511,50 @@
             <div class="skills">
               <h2 id="skills-heading">技能</h2>
               <p>
-                這裡目前是技能占位。將列出核心技能、工具與熟悉程度，方便快速掃描。
+                以下列出我主要的技術領域與熟練度，讓訪客能快速了解我的專長與常用場景。
               </p>
-              <div class="skills-list" aria-hidden="false">
-                <span class="skill-pill">HTML</span>
-                <span class="skill-pill">CSS (含 RWD)</span>
-                <span class="skill-pill">Responsive Design</span>
-                <span class="skill-pill">Accessibility</span>
-                <span class="skill-pill">Figma</span>
-                <span class="skill-pill">Git / GitHub</span>
+
+              <div class="skill-group" aria-hidden="false">
+                <div>
+                  <h3 class="muted" style="margin: 6px 0 4px 0">前端</h3>
+                  <div class="skill-row">
+                    <div class="skill-meta">HTML / CSS (RWD)</div>
+                    <div class="skill-meta">熟練度：90% — ★★★★☆</div>
+                  </div>
+                  <div class="skill-row">
+                    <div class="skill-meta">JavaScript / React</div>
+                    <div class="skill-meta">熟練度：75% — ★★★☆☆</div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="muted" style="margin: 6px 0 4px 0">後端</h3>
+                  <div class="skill-row">
+                    <div class="skill-meta">Node.js / Firebase</div>
+                    <div class="skill-meta">熟練度：60% — ★★☆☆☆</div>
+                  </div>
+                  <div class="skill-row">
+                    <div class="skill-meta">PHP（基礎）</div>
+                    <div class="skill-meta">熟練度：45% — ★★☆☆☆</div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="muted" style="margin: 6px 0 4px 0">工具</h3>
+                  <div class="skill-row">
+                    <div class="skill-meta">Git / GitHub</div>
+                    <div class="skill-meta">熟練度：85% — ★★★★☆</div>
+                  </div>
+                  <div class="skill-row">
+                    <div class="skill-meta">Figma / VSCode</div>
+                    <div class="skill-meta">熟練度：80% — ★★★★☆</div>
+                  </div>
+                </div>
               </div>
+
               <p class="muted" style="margin-top: 10px">
-                未來會用 Section SDD 生成更詳細技能說明卡片，請整段替換本區。
+                提示：技能區未來會用更詳盡的 Section SDD
+                生成可視化技能卡片，現在提供文字版方便快速掃描。
               </p>
             </div>
           </div>
@@ -459,102 +570,122 @@
           <div class="container">
             <h2 id="projects-heading">作品展示</h2>
             <p>
-              這裡目前是作品展示占位。Projects 區可放 1～3 張示意圖片（mobile
-              單欄，768px 以上可為兩欄）。
+              以下示例作品以太陽系行星為名稱，並連結至對應的 Wikipedia
+              說明頁面（簡短摘要摘自 Wikipedia）。
             </p>
 
             <div class="projects-grid" role="list">
+              <!-- Project 1 -->
               <article
                 class="project-item"
                 role="listitem"
                 aria-labelledby="proj1-title"
               >
                 <a
-                  href="https://unsplash.com/photos/HkTMcmlMOUQ"
+                  class="project-figure"
+                  href="https://en.wikipedia.org/wiki/Mercury_(planet)"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Mercury on Wikipedia"
                 >
+                  <!-- 使用示意圖片；可替換為更合適的行星圖片 -->
                   <img
-                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80"
-                    alt="示意：作品截圖 A"
+                    src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg"
+                    alt="Mercury"
                     loading="lazy"
                   />
                 </a>
                 <div>
                   <h3 id="proj1-title" class="project-title">
-                    Mercury — Project A
+                    <a
+                      href="https://en.wikipedia.org/wiki/Mercury_(planet)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Mercury</a
+                    >
                   </h3>
                   <p class="project-desc">
-                    這裡是作品 A 的短描述（最多 15 字內摘要示意）。
+                    Smallest and innermost planet in the Solar System.
                   </p>
-                  <p class="project-meta">
-                    示意：之後會連到作品詳頁或 GitHub。
-                  </p>
+                  <p class="project-meta">來源 / 詳細說明：Wikipedia 。</p>
                 </div>
               </article>
 
+              <!-- Project 2 -->
               <article
                 class="project-item"
                 role="listitem"
                 aria-labelledby="proj2-title"
               >
                 <a
-                  href="https://unsplash.com/photos/JmuyB_LibRo"
+                  class="project-figure"
+                  href="https://en.wikipedia.org/wiki/Venus"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Venus on Wikipedia"
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1000&q=80"
-                    alt="示意：作品截圖 B"
+                    src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg"
+                    alt="Venus"
                     loading="lazy"
                   />
                 </a>
                 <div>
                   <h3 id="proj2-title" class="project-title">
-                    Venus — Project B
+                    <a
+                      href="https://en.wikipedia.org/wiki/Venus"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Venus</a
+                    >
                   </h3>
                   <p class="project-desc">
-                    這裡是作品 B 的短描述（示意文字）。
+                    A rocky planet similar in size to Earth with a dense
+                    greenhouse atmosphere.
                   </p>
-                  <p class="project-meta">
-                    示意：之後會連到作品詳頁或 GitHub。
-                  </p>
+                  <p class="project-meta">來源 / 詳細說明：Wikipedia 。</p>
                 </div>
               </article>
 
-              <!-- 可視需求保留或移除第三項 -->
+              <!-- Project 3 -->
               <article
                 class="project-item"
                 role="listitem"
                 aria-labelledby="proj3-title"
               >
                 <a
-                  href="https://unsplash.com/photos/6anudmpILw4"
+                  class="project-figure"
+                  href="https://en.wikipedia.org/wiki/Earth"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Earth on Wikipedia"
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80"
-                    alt="示意：作品截圖 C"
+                    src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+                    alt="Earth"
                     loading="lazy"
                   />
                 </a>
                 <div>
                   <h3 id="proj3-title" class="project-title">
-                    Earth — Project C
+                    <a
+                      href="https://en.wikipedia.org/wiki/Earth"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Earth</a
+                    >
                   </h3>
                   <p class="project-desc">
-                    這裡是作品 C 的短描述（示意文字）。
+                    The third planet from the Sun and the only known planet to
+                    support life.
                   </p>
-                  <p class="project-meta">
-                    示意：之後會連到作品詳頁或 GitHub。
-                  </p>
+                  <p class="project-meta">來源 / 詳細說明：Wikipedia 。</p>
                 </div>
               </article>
             </div>
             <p class="muted" style="margin-top: 12px">
-              提示：Projects 區塊的整段內容會使用 Section SDD
-              替換，開發者可直接整段貼上。
+              提示：上述作品標題與說明已連結並引用
+              Wikipedia（作為示例資料來源），開發者可替換為真實作品與圖片。
             </p>
           </div>
         </section>
@@ -568,40 +699,39 @@
         >
           <div class="container">
             <h2 id="contact-heading">聯絡我</h2>
-            <p>
-              這裡目前是聯絡占位，提供常用聯絡方式（Email / 電話 / GitHub /
-              LinkedIn）。
-            </p>
+            <p>歡迎透過下列方式聯絡我（由 swimmer-xyz 自動生成）。</p>
 
             <div class="contact" style="max-width: 560px">
               <div class="contact-links">
                 <a
                   class="contact-btn"
-                  href="mailto:hello@example.com"
+                  href="mailto:swimmer-xyz@example.com"
                   title="寄信給我"
-                  >Email：hello@example.com</a
+                  >Email：swimmer-xyz@example.com</a
                 >
                 <a
                   class="contact-btn"
-                  href="tel:+886900000000"
-                  title="打電話給我"
-                  >電話：+886 900 000 000</a
-                >
-                <a
-                  class="contact-btn"
-                  href="https://github.com/yourname"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="我的 GitHub"
-                  >GitHub：/yourname</a
-                >
-                <a
-                  class="contact-btn"
-                  href="https://www.linkedin.com/in/yourname"
+                  href="https://www.linkedin.com/in/swimmer-xyz"
                   target="_blank"
                   rel="noopener noreferrer"
                   title="我的 LinkedIn"
-                  >LinkedIn：/in/yourname</a
+                  >LinkedIn：/in/swimmer-xyz</a
+                >
+                <a
+                  class="contact-btn"
+                  href="https://instagram.com/swimmer_xyz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="我的 IG"
+                  >IG：@swimmer_xyz</a
+                >
+                <a
+                  class="contact-btn"
+                  href="https://github.com/swimmer-xyz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="我的 GitHub"
+                  >GitHub：/swimmer-xyz</a
                 >
               </div>
 
@@ -625,9 +755,12 @@
             gap: 12px;
           "
         >
-          <div>© 2025 My Personal Website</div>
+          <div>© 2025 swimmer-xyz</div>
           <div class="muted" style="font-size: 13px">
-            設計風格：乾淨、專業、簡單 — 深色主題
+            設計風格：乾淨、專業、簡單 — 深色主題 •
+            <a href="#" style="color: inherit; text-decoration: underline"
+              >隱私政策</a
+            >
           </div>
         </div>
       </footer>
