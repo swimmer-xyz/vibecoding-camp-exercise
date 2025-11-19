@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>妙麗歲數計算機</title>
+    <!--  放入這三行開始 -->
+    <link rel="icon" type="image/png" href="./icon.png" />
+    <link rel="apple-touch-icon" href="./icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon.png" />
+    <!--  放入這三行結束 -->
+    <style>
+      body {
+        font-family: "Microsoft JhengHei", sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+        background: #fafafa;
+      }
+
+      .container {
+        width: 500px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      }
+
+      h1 {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .calc-box,
+      .info-box {
+        border: 1px solid #aaa;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 25px;
+        background: #f7f7f7;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        font-size: 15px;
+        border-radius: 4px;
+        border: 1px solid #aaa;
+      }
+
+      button {
+        margin-top: 15px;
+        padding: 8px 16px;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 4px;
+        border: 2px solid #2b78e4;
+        background: #e6e6e6;
+        transition: 0.2s;
+      }
+
+      button:hover {
+        background: #d4e6fb;
+      }
+
+      .result {
+        margin-top: 15px;
+        padding: 12px;
+        height: 60px;
+        background: #eee;
+        border-radius: 4px;
+        white-space: pre-line;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/194/194279.png"
+          width="32"
+        />
+        妙麗歲數計算機
+      </h1>
+
+      <!-- 計算區塊 -->
+      <div class="calc-box">
+        <label>
+          狗狗的出生日期：
+          <input id="birthInput" type="date" />
+        </label>
+
+        <button id="calcBtn">開始計算</button>
+
+        <div id="result" class="result"></div>
+      </div>
+
+      <!-- 說明區塊 -->
+      <div class="info-box">
+        <h3>計算方式說明</h3>
+        <p>狗狗的人類年齡換算方式採用如下常用公式：</p>
+
+        <pre>
+狗的頭兩年：1 狗年 = 10.5 人類年  
+之後每一年：1 狗年 = 4 人類年
+      </pre
+        >
+
+        <p>公式來源：</p>
+        <a
+          href="https://www.akc.org/expert-advice/health/how-to-calculate-dog-years-to-human-years/"
+          target="_blank"
+        >
+          https://www.akc.org/expert-advice/health/how-to-calculate-dog-years-to-human-years/
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // 取得 DOM
+      const birthInput = document.getElementById("birthInput");
+      const resultBox = document.getElementById("result");
+      const calcBtn = document.getElementById("calcBtn");
+
+      // --- 設定預設日期（今日） ---
+      function getToday() {
+        const today = new Date();
+        return today.toISOString().split("T")[0];
+      }
+
+      // --- 儲存日期到 localStorage ---
+      function saveBirth(date) {
+        localStorage.setItem("dogBirth", date);
+      }
+
+      // --- 讀取 localStorage 日期 ---
+      function loadBirth() {
+        return localStorage.getItem("dogBirth");
+      }
+
+      // --- 計算狗年齡與人類年齡 ---
+      function calculateAge(birthStr) {
+        const birthDate = new Date(birthStr);
+        const today = new Date();
+
+        const diffMs = today - birthDate;
+        const dogYears = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+
+        // 人類年齡換算公式
+        let humanAge = 0;
+        if (dogYears <= 2) {
+          humanAge = dogYears * 10.5;
+        } else {
+          humanAge = 2 * 10.5 + (dogYears - 2) * 4;
+        }
+
+        return {
+          dogYears: dogYears.toFixed(1),
+          humanAge: humanAge.toFixed(1),
+        };
+      }
+
+      // --- 將結果輸出 ---
+      function displayResult(dogYears, humanAge) {
+        resultBox.textContent = `妙麗現在大約 ${dogYears} 歲狗年齡，\n換算成人類大約是 ${humanAge} 歲`;
+      }
+
+      // --- 點擊按鈕觸發計算 ---
+      calcBtn.addEventListener("click", () => {
+        const birth = birthInput.value || getToday();
+        saveBirth(birth);
+
+        const { dogYears, humanAge } = calculateAge(birth);
+        displayResult(dogYears, humanAge);
+      });
+
+      // --- 網頁載入時：讀取 localStorage 並自動計算 ---
+      window.onload = () => {
+        const stored = loadBirth();
+
+        if (stored) {
+          birthInput.value = stored;
+          const { dogYears, humanAge } = calculateAge(stored);
+          displayResult(dogYears, humanAge);
+        } else {
+          birthInput.value = getToday();
+        }
+      };
+    </script>
+  </body>
+</html>
