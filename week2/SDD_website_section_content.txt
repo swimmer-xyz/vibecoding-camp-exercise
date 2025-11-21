@@ -2,34 +2,27 @@
 請依照以下內容規格，更新【Phase 1】的產出(一個完整的 index.html)
 
 更新規則：
-1.【本次異動範圍】中所寫的區塊才需更新，其餘維持原狀，
-2.【本次異動範圍】若為 ALL ，則更新所有區塊
+1.【本次更新範圍】中所寫的區塊才需更新，其餘維持原狀，
+2.【本次更新範圍】若為 ALL ，則更新所有區塊
 
 =====================================================================================
 
 # Section內容規格書 v1.0 
 
-【本次異動範圍】
+【本次更新範圍】
 ALL
 
-【異動方式】
+【更新方式】
 1.區塊樣式
-	- 如果有異動，異動內容應放在對應的位置，示意：	
-		- Hero 區：(CSS:HERO)
-			/* CSS:HERO-START */
-			異動內容：…所有與 Hero 區相關的樣式，例如 .section-hero、.hero-title…
-			/* CSS:HERO-END */
-	- 保留/* CSS:HERO-START */ 和 /* CSS:HERO-END */，以便下次異動	
+	- 如果有更新，更新內容應放在對應的位置，以Hero區為例：	
+		- 刪除 /* CSS:HERO-START */ 和 /* CSS:HERO-END */ 之間的舊有資料，並更新內容
+		- 保留/* CSS:HERO-START */ 和 /* CSS:HERO-END */，以便下次更新
+
 2.區塊內容
-	- 如果有異動，異動內容應放在對應的位置，示意：	
-		-Hero 區：
-			<!-- SECTION:HERO-START -->
-			<section id="hero" class="section section-hero">
-			異動內容： …Hero 區占位內容…
-			</section>
-			<!-- SECTION:HERO-END -->
-	- 保留/* SECTION:HERO-START */ 和 /* SECTION:HERO-END */，以便下次異動
-	- 儘量不要改變樣式
+	- 如果有更新，更新內容應放在對應的位置，以Hero區為例：	
+		- 刪除 /* SECTION:HERO-START */ 和 /* SECTION:HERO-END */ 之間的舊有資料，並更新內容
+		- 保留/* SECTION:HERO-START */ 和 /* SECTION:HERO-END */，以便下次更新
+		- 儘量不要改變樣式
 
 
 【一、Header（導覽列）】
@@ -85,9 +78,14 @@ ALL
 
 【八、圖片規則】
 1.與「{主題}」相關、可免費商用且無版權疑慮的圖片，符合以下條件：
-	- 圖片來源必須是明確標示為免費且允許商業使用的網站，例如：Wikimedia Commons、Pixabay、Pexels、Unsplash（皆可）。
-	- 請提供「可直接引用的原始圖片直連網址（非網頁而是圖片本體）」。
-	- 不要提供會 404 的連結，請檢查連結真實能開啟。
-	- 請同時提供圖片的授權資訊（例如 CC0、CC BY 4.0、Unsplash License）。
+	- 圖片來源必須是明確標示為免費且允許商業使用的網站，例如：Wikimedia Commons、Pixabay、Pexels、Unsplash（皆可）。	
+	- 不要提供會 404 的連結，請檢查連結真實能開啟。	
 	- 不要輸出 HTML escape，例如 &。
 	- 盡量優先選擇：CC0 或 Public Domain。
+	- 圖片大小可自行調整以符合需求
+
+【九、自我檢查】
+完成後，再次進行Phase1的「自我檢查清單」，若有不符合則調整
+1.須保留Phase2所更新之區塊內容，但區塊樣式可改
+2.有更新內容的部分，須將Phase1所生成的說明文字，例如「占位」都移除，
+2.若Phase2的需求與Phase1有牴觸，請向我提出問題來進行修正

@@ -1,5 +1,5 @@
 # 【Phase 1】建立個人網站骨架
-（單一 index.html，嚴禁 JS＋使用 Unsplash 圖庫＋HTML/CSS 皆預留插槽＋CSS 禁用 ID 選擇器）
+（單一 index.html，嚴禁 JS＋HTML/CSS 皆預留插槽＋CSS 禁用 ID 選擇器）
 
 你現在是一位「前端工程師＋教練」，  
 任務是幫我建立一個個人網站的「環境與骨架」，全部寫在單一 index.html 檔案裡，並且要幫開發者預留好「HTML 區塊插槽」與「CSS 區塊插槽」，方便之後用其他 Prompt 來替換。
@@ -122,7 +122,7 @@
 2.禁止外部資源：
    - 不可以使用 <link rel="stylesheet">。
    - 不可以使用任何外部 JS 或 CSS CDN（包含 Google Fonts、Bootstrap 等）。
-   - 圖片網址(Unsplash)不算外部資源
+   - 圖片網址不算外部資源
 
 3.CSS 必須全部寫在 <head> 裡「單一的」 style 標籤內。
 
@@ -232,7 +232,6 @@
 	- 所有 <a> 的 href 都是非空、不是 #：
 		  - 導覽列用 href="#hero" 這類錨點。
 		  - 其他連結（GitHub / Email / LinkedIn 等）使用 mailto:、tel: 或完整 https URL。
-	- 所有 <img> 來源皆為 Unsplash，且有合理的 alt 文本。
 	- 圖片有透過 CSS 保證不會造成水平捲動。
 
 3.HTML 插槽（Section Slot）
@@ -251,4 +250,7 @@
 
 6.版面與 RWD
 	- 採用手機優先設計，在 320px、768px、1440px 寬度下理論上不會水平捲動。
-	- 各區塊有清楚的占位文案，提醒未來會用 Section SDD 來替換。	
+	- 請注意可能影響的問題並修正:
+		-巢狀 .container 造成累積左右內距
+		- 固定像素欄位 (360px) 在窄視窗下可能超出可用寬度
+		-projects grid / hero grid 未使用彈性最小值保障	
