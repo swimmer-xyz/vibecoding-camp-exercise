@@ -84,3 +84,36 @@ ALL
 	- © 年份 + 名字(swimmer-xyz)
 	- 社群連結（選用）
 	- 隱私政策 / 使用條款（如需）
+
+
+【八、自我檢查清單（請在產出前自行確認，含插槽與 href）】
+1.結構與 SEO
+	- 有 <!DOCTYPE html>、<html lang="zh-Hant">、<head>、<body>。
+	- <meta charset="UTF-8"> 與 <meta name="viewport"> 已設定。
+	- 有 <title> 與 <meta name="description">，描述以中文字元計算，約 50～160 字。。
+	- 全站只有一個 <h1>，在 Hero 區。
+
+2.連結與圖片
+	- 所有 <a> 的 href 都是非空、不是 #：
+		  - 導覽列用 href="#hero" 這類錨點。
+		  - 其他連結（GitHub / Email / LinkedIn 等）使用 mailto:、tel: 或完整 https URL。
+	- 所有 <img> 來源皆為 Unsplash，且有合理的 alt 文本。
+	- 圖片有透過 CSS 保證不會造成水平捲動。
+
+3.HTML 插槽（Section Slot）
+	- <main> 裡的 Hero / About / Skills / Projects / Contact 各有一組 SECTION:XXX-START / SECTION:XXX-END 註解。
+	- 每組註解中間包住「一整個 section」，且 section 自身帶有對應的 id（hero / about / skills / projects / contact）。
+	- 各占位區塊文字都有清楚寫出：之後會用 Section SDD 產生新的 section，請開發者「整段貼在兩個註解中間」來替換。
+
+4.CSS 插槽（CSS Slot）
+	- <style> 裡有 CSS:BASE / CSS:HERO / CSS:ABOUT / CSS:SKILLS / CSS:PROJECTS / CSS:CONTACT / CSS:RWD 等註解區塊。
+	- 各區塊內的選擇器皆使用元素或 class，不使用 ID。
+
+5.CSS 禁用 ID 選擇器
+	- section 的 id 不會用於任何 CSS，只用於錨點。
+	- 確認整份 CSS 沒有任何 #xxx 選擇器。
+	- 所有區塊樣式都以 .section-hero、.section-about 等 class 為主。
+
+6.版面與 RWD
+	- 採用手機優先設計，在 320px、768px、1440px 寬度下理論上不會水平捲動。
+	- 各區塊有清楚的占位文案，提醒未來會用 Section SDD 來替換。		
